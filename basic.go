@@ -71,6 +71,67 @@ func triangle() {
 	fmt.Println(c)
 }
 
+func consts() {
+	const filename string = "abc.txt"
+
+	// 如果声明了常量的类型，常量的类型就确定了，转换成其他类型需要强制类型转换
+	//const a, b int = 3, 4
+	//c := int(math.Sqrt(float64(a*a + b*b)))
+	//fmt.Println(c)
+
+	// 如果没有声明常量的类型，常量的类型就不是确定的，可以自动类型转换
+	const a, b = 3, 4
+	c := int(math.Sqrt(a*a + b*b))
+	fmt.Println(c)
+
+	// 常量可以定义在一个组内
+	const (
+		aaa = 1
+		bbb = true
+		ccc = "ccc"
+	)
+	fmt.Println(aaa, bbb, ccc)
+}
+
+// 使用常量定义枚举类型
+func enums() {
+	//const (
+	//	cpp    = 0
+	//	java   = 1
+	//	python = 2
+	//	golang = 3
+	//)
+	//fmt.Println(cpp, java, python, golang)
+
+	//const (
+	//	cpp = iota //表示从0自增
+	//	java
+	//	python
+	//	golang
+	//)
+	//fmt.Println(cpp, java, python, golang)
+
+	//const (
+	//	cpp = iota
+	//	_ // 不需要的可以用 _ 跳过
+	//	python
+	//	golang
+	//	javascript
+	//)
+	//fmt.Println(cpp, javascript, python, golang)
+
+	// iota 还可以参与运算
+	const (
+		b = 1 << (10 * iota)
+		kb
+		mb
+		gb
+		tb
+		pb
+	)
+	fmt.Println(b, kb, mb, gb, tb, pb)
+}
+
 func main() {
 	variableZeroValue()
 	variableInitialValue()
@@ -80,4 +141,7 @@ func main() {
 	triangle()
 
 	fmt.Println(aa, bb, ss)
+
+	consts()
+	enums()
 }
