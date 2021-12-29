@@ -132,7 +132,7 @@ func enums() {
 	fmt.Println(b, kb, mb, gb, tb, pb)
 }
 
-func main() {
+func main0() {
 	variableZeroValue()
 	variableInitialValue()
 	variableTypeDeduction()
