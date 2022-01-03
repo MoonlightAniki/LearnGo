@@ -5,7 +5,7 @@ import "LearnGo/leetcode/kit"
 type TreeNode = kit.TreeNode
 
 func inorderTraversal(root *TreeNode) []int {
-	res := make([]int, 0)
+	var res []int
 	if root == nil {
 		return res
 	}

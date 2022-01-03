@@ -5,7 +5,7 @@ import "LearnGo/leetcode/kit"
 type Node = kit.Node
 
 func postorder(root *Node) []int {
-	res := make([]int, 0)
+	var res []int
 	if root == nil {
 		return res
 	}
