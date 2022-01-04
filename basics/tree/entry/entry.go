@@ -1,7 +1,7 @@
 package main
 
 import (
-	"LearnGo/tree"
+	"LearnGo/basics/tree"
 	"fmt"
 )
 

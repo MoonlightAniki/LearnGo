@@ -1,7 +1,7 @@
 package main
 
 import (
-	"LearnGo/queue"
+	"LearnGo/basics/queue"
 	"fmt"
 )
 
