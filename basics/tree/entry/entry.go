@@ -5,7 +5,46 @@ import (
 	"fmt"
 )
 
+// 扩展系统类型或者别人的类型的方法有两种：
+// 1.定义别名
+// 2.使用组合
+
+// 演示如何使用组合扩展别人的类型：
+// 假设 tree.Node 是别人定义的类型，并且只实现了中序遍历，使用组合的方式为 tree.Node 增加前序遍历和后续遍历
+type myTreeNode struct {
+	node *tree.Node
+}
+
+func (node *myTreeNode) postOrder() {
+	if node == nil || node.node == nil {
+		return
+	}
+	left := myTreeNode{node.node.Left}
+	left.postOrder()
+	right := myTreeNode{node.node.Right}
+	right.postOrder()
+	node.node.Print()
+}
+
 func main() {
+	//test001()
+
+	root := tree.CreateNode(1)
+	root.Left = tree.CreateNode(2)
+	root.Right = tree.CreateNode(3)
+	root.Left.Left = tree.CreateNode(4)
+	root.Left.Right = tree.CreateNode(5)
+	root.Right.Left = tree.CreateNode(6)
+	root.Right.Right = tree.CreateNode(7)
+	root.InOrderTraverse()
+
+	fmt.Println()
+
+	myRoot := myTreeNode{root}
+	myRoot.postOrder()
+}
+
+func test001() {
 	// 不在一个包内，需要加上包名
 	var root tree.Node // zero Value is {0 <nil> <nil>}
 	fmt.Println(root)
@@ -52,5 +91,4 @@ func main() {
 	fmt.Println()
 
 	root.InOrderTraverse() // 0, 100, 0, 5, 6
-
 }
