@@ -23,7 +23,6 @@ func CopyIntArray(arr []int) []int {
 // 生成有 n 个元素的随机数组，每个元素的取值返回 [rangeL...rangeR]
 func GenerateRandomArray(n int, rangeL int, rangeR int) []int {
 	arr := make([]int, n)
-	rand.Seed(time.Now().Unix())
 	for i := 0; i < n; i++ {
 		arr[i] = rangeL + rand.Intn(rangeR-rangeL+1)
 	}
@@ -36,7 +35,6 @@ func GenerateNearlyOrderedArray(n int, swapTimes int) []int {
 	for i := 0; i < n; i++ {
 		arr[i] = i
 	}
-	rand.Seed(time.Now().Unix())
 	for i := 0; i < swapTimes; i++ {
 		x := rand.Intn(n)
 		y := rand.Intn(n)

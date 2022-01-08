@@ -3,7 +3,6 @@ package quickSort
 import (
 	"LearnGo/algorithm/02-Sorting-Algorithms/insertionSort"
 	"math/rand"
-	"time"
 )
 
 // region 快速排序 第一个版本
@@ -40,7 +39,6 @@ func partition(arr []int, l int, r int) int {
 // region 快速排序 第二个版本
 // partition 操作时随机选择一个元素的值作为标定点 pivot
 func QuickSort2(arr []int) {
-	rand.Seed(time.Now().UnixMilli())
 	quickSort2(arr, 0, len(arr)-1)
 }
 
@@ -93,7 +91,6 @@ var partition3 = partition2
 
 // region 双路快排
 func QuickSort2Ways(arr []int) {
-	rand.Seed(time.Now().UnixMilli())
 	quickSort2Ways(arr, 0, len(arr)-1)
 }
 
@@ -137,7 +134,6 @@ func partition2Ways(arr []int, l int, r int) int {
 
 // region 三路快排
 func QuickSort3Ways(arr []int) {
-	rand.Seed(time.Now().UnixMilli())
 	quickSort3Ways(arr, 0, len(arr)-1)
 }
 
