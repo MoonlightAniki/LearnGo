@@ -5,6 +5,7 @@ import (
 	"LearnGo/algorithm/02-Sorting-Algorithms/quickSort"
 	"LearnGo/algorithm/02-Sorting-Algorithms/shellSort"
 	"LearnGo/algorithm/02-Sorting-Algorithms/sortTestHelper"
+	"LearnGo/algorithm/04-Heap/heapsort"
 )
 
 func main() {
@@ -30,6 +31,9 @@ func main() {
 	arr17 := sortTestHelper.CopyIntArray(arr)
 	arr18 := sortTestHelper.CopyIntArray(arr)
 	arr19 := sortTestHelper.CopyIntArray(arr)
+	arr20 := sortTestHelper.CopyIntArray(arr)
+	arr21 := sortTestHelper.CopyIntArray(arr)
+	arr22 := sortTestHelper.CopyIntArray(arr)
 
 	//sortTestHelper.TestSort("SelectionSort", selectionSort.SelectionSort, arr)
 	//sortTestHelper.TestSort("InsertionSort", insertionSort.InsertionSort, arr2)
@@ -51,5 +55,8 @@ func main() {
 	sortTestHelper.TestSort("quickSort3", quickSort.QuickSort3, arr17)
 	sortTestHelper.TestSort("quickSort2Ways", quickSort.QuickSort2Ways, arr18)
 	sortTestHelper.TestSort("quickSort3Ways", quickSort.QuickSort3Ways, arr19)
+	sortTestHelper.TestSort("HeapSort1", heapsort.HeapSort1, arr20)
+	sortTestHelper.TestSort("HeapSort2", heapsort.HeapSort2, arr21)
+	sortTestHelper.TestSort("HeapSort3", heapsort.HeapSort3, arr22)
 
 }
