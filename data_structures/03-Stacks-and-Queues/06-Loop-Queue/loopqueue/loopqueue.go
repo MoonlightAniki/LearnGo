@@ -7,9 +7,9 @@ import (
 
 type LoopQueue struct {
 	data  []interface{}
-	front int
-	tail  int
-	size  int
+	front int // 队首元素的索引
+	tail  int // 队尾元素下一个位置的索引
+	size  int // 队列中元素个数
 }
 
 func NewLoopQueue() *LoopQueue {
@@ -43,7 +43,8 @@ func (q *LoopQueue) Poll() interface{} {
 	q.front = (q.front + 1) % len(q.data)
 	q.size--
 
-	if q.size <= q.GetCapacity()/4 && q.GetCapacity()/2 > 0 {
+	// 队列中元素个数等于容量的1/4,进行缩容
+	if q.size == q.GetCapacity()/4 && q.GetCapacity()/2 > 0 {
 		q.resize(q.GetCapacity() / 2)
 	}
 	return front
@@ -72,9 +73,15 @@ func (q *LoopQueue) String() string {
 	buffer := bytes.Buffer{}
 	buffer.WriteString(fmt.Sprintf("LoopQueue: size=%d, capacity=%d\n", q.size, q.GetCapacity()))
 	buffer.WriteString("front [")
-	for i := q.front; i != q.tail; i = (i + 1) % len(q.data) {
-		buffer.WriteString(fmt.Sprintf("%v", q.data[i]))
-		if (i+1)%len(q.data) != q.tail {
+	//for i := q.front; i != q.tail; i = (i + 1) % len(q.data) {
+	//	buffer.WriteString(fmt.Sprintf("%v", q.data[i]))
+	//	if (i+1)%len(q.data) != q.tail {
+	//		buffer.WriteString(", ")
+	//	}
+	//}
+	for i := 0; i < q.size; i++ {
+		buffer.WriteString(fmt.Sprintf("%v", q.data[(q.front+i)%len(q.data)]))
+		if i != q.size-1 {
 			buffer.WriteString(", ")
 		}
 	}
