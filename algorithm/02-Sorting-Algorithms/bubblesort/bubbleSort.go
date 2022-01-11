@@ -1,4 +1,4 @@
-package bubbleSort
+package bubblesort
 
 // 冒泡排序
 func BubbleSort(arr []int) {

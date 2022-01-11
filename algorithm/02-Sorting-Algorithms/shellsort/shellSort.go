@@ -1,7 +1,7 @@
-package shellSort
+package shellsort
 
 // 希尔排序
-// 需要保证最后一次巡环时h的值为1，否则无法保证排序后数组是有序的！
+// 需要保证最后一次循环时h的值为1，否则无法保证排序后数组是有序的！
 func ShellSort(arr []int) {
 	n := len(arr)
 	h := n / 2

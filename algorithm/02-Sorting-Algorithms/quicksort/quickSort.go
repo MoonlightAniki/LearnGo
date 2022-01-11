@@ -1,7 +1,7 @@
-package quickSort
+package quicksort
 
 import (
-	"LearnGo/algorithm/02-Sorting-Algorithms/insertionSort"
+	"LearnGo/algorithm/02-Sorting-Algorithms/insertionsort"
 	"math/rand"
 )
 
@@ -77,7 +77,7 @@ func QuickSort3(arr []int) {
 
 func quickSort3(arr []int, l int, r int) {
 	if r-l+1 <= 16 {
-		insertionSort.InsertionSort3(arr, l, r)
+		insertionsort.InsertionSort3(arr, l, r)
 		return
 	}
 	p := partition3(arr, l, r)
@@ -96,7 +96,7 @@ func QuickSort2Ways(arr []int) {
 
 func quickSort2Ways(arr []int, l int, r int) {
 	if r-l+1 <= 16 {
-		insertionSort.InsertionSort3(arr, l, r)
+		insertionsort.InsertionSort3(arr, l, r)
 		return
 	}
 	p := partition2Ways(arr, l, r)
@@ -139,7 +139,7 @@ func QuickSort3Ways(arr []int) {
 
 func quickSort3Ways(arr []int, l int, r int) {
 	if r-l+1 <= 16 {
-		insertionSort.InsertionSort3(arr, l, r)
+		insertionsort.InsertionSort3(arr, l, r)
 		return
 	}
 	lt, gt := partition3Ways(arr, l, r)

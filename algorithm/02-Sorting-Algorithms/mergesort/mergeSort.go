@@ -1,6 +1,6 @@
-package mergeSort
+package mergesort
 
-import "LearnGo/algorithm/02-Sorting-Algorithms/insertionSort"
+import "LearnGo/algorithm/02-Sorting-Algorithms/insertionsort"
 
 func MergeSort(arr []int) {
 	mergeSort(arr, 0, len(arr)-1)
@@ -125,7 +125,7 @@ func MergeSort3(arr []int) {
 
 func mergeSort3(arr []int, l int, r int, aux []int) {
 	if r-l+1 <= 16 {
-		insertionSort.InsertionSort3(arr, l, r)
+		insertionsort.InsertionSort3(arr, l, r)
 		return
 	}
 	mid := l + (r-l)/2
@@ -143,7 +143,7 @@ func MergeSortBU3(arr []int) {
 	size := 16
 	for i := 0; i < n; i += size {
 		// 对 arr[i...i+size-1] 范围内元素进行插入排序
-		insertionSort.InsertionSort3(arr, i, minOf(n-1, i+size-1))
+		insertionsort.InsertionSort3(arr, i, minOf(n-1, i+size-1))
 	}
 	aux := make([]int, n)
 	for ; size < n; size += size {

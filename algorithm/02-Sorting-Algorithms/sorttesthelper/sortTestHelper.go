@@ -1,4 +1,4 @@
-package sortTestHelper
+package sorttesthelper
 
 import (
 	"fmt"
