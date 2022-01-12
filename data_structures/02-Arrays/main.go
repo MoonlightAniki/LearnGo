@@ -1,12 +1,12 @@
 package main
 
 import (
-	"LearnGo/data_structures/02-Arrays/08-Amortized-Time-Complexity/array"
+	"LearnGo/data_structures/02-Arrays/array"
 	"fmt"
 )
 
 func main() {
-	arr := array.New(10)
+	arr := array.NewArray(10)
 	for i := 0; i < 10; i++ {
 		arr.AddLast(i)
 	}

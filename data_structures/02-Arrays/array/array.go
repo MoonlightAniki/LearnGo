@@ -12,7 +12,7 @@ type Array struct {
 }
 
 // 构造函数
-func New(capacity int) *Array {
+func NewArray(capacity int) *Array {
 	return &Array{
 		data: make([]interface{}, capacity),
 	}
@@ -119,7 +119,7 @@ func (a *Array) Remove(index int) interface{} {
 	}
 	a.size--
 	a.data[a.size] = nil
-	if a.size == len(a.data)/2 {
+	if a.size == len(a.data)/4 && len(a.data)/2 != 0 {
 		a.resize(len(a.data) / 2)
 	}
 	return e
