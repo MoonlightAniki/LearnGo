@@ -70,7 +70,7 @@ func _search(nums []int, l int, r int, target int) int {
 	return -1
 }*/
 
-func search(nums []int, target int) int {
+/*func search(nums []int, target int) int {
 	l, r := 0, len(nums)-1
 	for l <= r {
 		mid := l + (r-l)/2
@@ -89,6 +89,33 @@ func search(nums []int, target int) int {
 			} else {
 				l = mid + 1
 			}
+		}
+	}
+	return -1
+}*/
+
+func search(nums []int, target int) int {
+	lo, hi := 0, len(nums)-1
+	// 先找到最小值的索引，也就是旋转点的索引
+	for lo < hi {
+		mid := lo + (hi-lo)/2
+		if nums[mid] > nums[hi] {
+			lo = mid + 1
+		} else {
+			hi = mid
+		}
+	}
+	rotate := lo
+	lo, hi = 0, len(nums)-1
+	for lo <= hi {
+		mid := lo + (hi-lo)/2
+		realMid := (mid + rotate) % len(nums)
+		if target == nums[realMid] {
+			return realMid
+		} else if target < nums[realMid] {
+			hi = mid - 1
+		} else {
+			lo = mid + 1
 		}
 	}
 	return -1
@@ -131,9 +158,9 @@ func _binarySearch(nums []int, l int, r int, target int) int {
 
 func Test() {
 	//testBinarySearch()
-	//fmt.Println(search([]int{4, 5, 6, 7, 0, 1, 2}, 0))
-	//fmt.Println(search([]int{4, 5, 6, 7, 0, 1, 2}, 3))
-	fmt.Println(search([]int{4, 5, 6, 7, 8, 1, 2, 3}, 8))
+	fmt.Println(search([]int{4, 5, 6, 7, 0, 1, 2}, 0))
+	fmt.Println(search([]int{4, 5, 6, 7, 0, 1, 2}, 3))
+	//fmt.Println(search([]int{4, 5, 6, 7, 8, 1, 2, 3}, 8))
 }
 
 func testBinarySearch() {
