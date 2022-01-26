@@ -1,5 +1,7 @@
 package solution0070
 
+import "fmt"
+
 /*
 You are climbing a staircase. It takes n steps to reach the top.
 
@@ -30,7 +32,7 @@ Constraints:
 链接：https://leetcode-cn.com/problems/climbing-stairs
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
-func climbStairs(n int) int {
+/*func climbStairs(n int) int {
 	dp := make([]int, n+1)
 	dp[0] = 1
 	dp[1] = 1
@@ -38,4 +40,27 @@ func climbStairs(n int) int {
 		dp[i] = dp[i-1] + dp[i-2]
 	}
 	return dp[n]
+}*/
+
+var memo []int
+
+func climbStairs(n int) int {
+	memo = make([]int, n+1)
+	return calWays(n)
+}
+
+func calWays(n int) int {
+	if n == 0 || n == 1 {
+		return 1
+	}
+	if memo[n] != 0 {
+		return memo[n]
+	}
+	res := calWays(n-1) + calWays(n-2)
+	memo[n] = res
+	return res
+}
+
+func Test() {
+	fmt.Println(climbStairs(3))
 }
