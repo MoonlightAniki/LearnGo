@@ -29,7 +29,7 @@ n == grid[i].length
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 
-func minPathSum(grid [][]int) int {
+/*func minPathSum(grid [][]int) int {
 	m := len(grid)
 	n := len(grid[0])
 	dp := make([]int, n)
@@ -41,6 +41,34 @@ func minPathSum(grid [][]int) int {
 		dp[0] += grid[i][0]
 		for j := 1; j < n; j++ {
 			dp[j] = grid[i][j] + minOf(dp[j], dp[j-1])
+		}
+	}
+	return dp[n-1]
+}
+
+func minOf(a, b int) int {
+	if a < b {
+		return a
+	} else {
+		return b
+	}
+}*/
+
+func minPathSum(grid [][]int) int {
+	m := len(grid)
+	n := len(grid[0])
+	dp := make([]int, n)
+	dp[0] = grid[0][0]
+	for j := 1; j < n; j++ {
+		dp[j] = dp[j-1] + grid[0][j]
+	}
+	for i := 1; i < m; i++ {
+		for j := 0; j < n; j++ {
+			if j == 0 {
+				dp[j] += grid[i][j]
+			} else {
+				dp[j] = grid[i][j] + minOf(dp[j], dp[j-1])
+			}
 		}
 	}
 	return dp[n-1]
