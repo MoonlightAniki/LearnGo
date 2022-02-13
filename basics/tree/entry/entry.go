@@ -51,8 +51,12 @@ func (node *myTreeNode2) InOrderTraverse() {
 }
 
 func main() {
-	//test001()
+	test001()
 
+	//test002()
+}
+
+func test002() {
 	root := myTreeNode2{tree.CreateNode(1)}
 	root.Left = tree.CreateNode(2)
 	root.Right = tree.CreateNode(3)
@@ -121,4 +125,21 @@ func test001() {
 	fmt.Println()
 
 	root.InOrderTraverse() // 0, 100, 0, 5, 6
+
+	fmt.Println("InOrderTraverseFunc")
+	count := 0
+	root.InOrderTraverseFunc(func(node *tree.Node) {
+		count++
+	})
+	fmt.Println(count)
+
+	fmt.Println("InOrderTraverseWithChannel")
+	c := root.InOrderTraverseWithChannel()
+	maxValue := root.Value
+	for node := range c {
+		if node.Value > maxValue {
+			maxValue = node.Value
+		}
+	}
+	fmt.Printf("maxValue is %d\n", maxValue)
 }

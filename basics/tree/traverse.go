@@ -30,3 +30,23 @@ func (node *Node) PostOrderTraverse() {
 	node.Right.PostOrderTraverse()
 	fmt.Println(node.Value)
 }
+
+func (node *Node) InOrderTraverseFunc(f func(*Node)) {
+	if node == nil {
+		return
+	}
+	node.Left.InOrderTraverseFunc(f)
+	f(node)
+	node.Right.InOrderTraverseFunc(f)
+}
+
+func (node *Node) InOrderTraverseWithChannel() chan *Node {
+	out := make(chan *Node)
+	go func() {
+		node.InOrderTraverseFunc(func(node *Node) {
+			out <- node
+		})
+		close(out)
+	}()
+	return out
+}
